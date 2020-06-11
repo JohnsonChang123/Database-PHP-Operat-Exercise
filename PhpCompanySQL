@@ -1,0 +1,47 @@
+
+CREATE DATABASE IF NOT EXISTS `inventory` ;
+Use `inventory`;
+/* 新增資料表 employee*/
+DROP TABLE IF EXISTS `employee`;
+create table `employee` (
+`employeeid` char(10) not null,
+`ename` char(20),
+`birthday` date,
+`id` char(10),
+`cellphone` char(10),
+`address` varchar(50),
+`meno` text,
+PRIMARY KEY (`employeeid`) 
+)ENGINE=INNODB  DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `product`;
+create table `product` (
+`productid` char(10) not null,
+`productname` varchar(50),
+`type` char(30),
+`company` char(30),
+`meno` text,
+PRIMARY KEY (`productid`) 
+)ENGINE=INNODB  DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `stockdetail`;
+create table `stockdetail` (
+`employeeid` char(10) not null,
+`productid` char(10) not null,
+`stockprice` int,
+`stockquantity` int,
+`stockdate` date,
+PRIMARY KEY(`employeeid`,`productid`)
+)ENGINE=INNODB  DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `inventorydetail`;
+create table `inventorydetail` (
+`employeeid` char(10) not null,
+`productid` char(10) not null,
+`inventoryprice` int,
+`inventoryquantity` int,
+`quantitydifference` int,
+`inventorylosses` int,
+`inventorydate` date,
+PRIMARY KEY(`employeeid`,`productid`)
+)ENGINE=INNODB  DEFAULT CHARSET=utf8mb4;
